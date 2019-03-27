@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #D9230F;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: #91170a;
+    text-decoration: none;
+}

@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.doubanio.com/simple/"
+verify_ssl = true
+
+[dev-packages]
+bpython = "*"
+
+[packages]
+django = ">=2.1"
+channels = ">=2.1"
+django-extensions = "*"
+channels-redis = ">=2.2"
+djangorestframework = "*"
+django-rest-swagger = "*"
+
+[requires]
+python_version = "3.7"

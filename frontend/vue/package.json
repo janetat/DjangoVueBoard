@@ -1,0 +1,38 @@
+{
+  "name": "vuejs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build-watch": "vue-cli-service build --watch"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axios-progress-bar": "^1.2.0",
+    "camelcase-keys": "^4.2.0",
+    "element-ui": "^2.6.1",
+    "lodash": "^4.17.11",
+    "vue": "^2.6.8",
+    "vue-clickaway": "^2.2.2",
+    "vue-native-websocket": "^2.0.12",
+    "vue-router": "^3.0.2",
+    "vuedraggable": "^2.19.1",
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/eslint-config-airbnb": "^3.0.5",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.8"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block style %}{% endblock %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/simplex/bootstrap.min.css"/>
+
+
+</head>
+<body style="background-color: #FFFFF3">
+{% block header %}{% endblock %}
+
+<div class="container">
+    {% block body %}
+    {% endblock %}
+</div>
+
+
+{% block extrascript %}
+{% endblock %}
+</body>
+</html>
