@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.backend'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -128,8 +128,7 @@ STATICFILES_DIRS = [
 # login related
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/account/login/'
-LOGOUT_REDIRECT_URL = '/'
-
+LOGOUT_REDIRECT_URL = 'account/login/'
 ROOT_URLCONF = 'backend.views.urls'
 
 ASGI_APPLICATION = 'views.routing.application'

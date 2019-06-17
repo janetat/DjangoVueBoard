@@ -20,4 +20,3 @@ if settings.DEBUG:
 
 # let vue-router take care of the rest of urls
 urlpatterns += [re_path('.*', login_required(TemplateView.as_view(template_name='index.html')))]
-

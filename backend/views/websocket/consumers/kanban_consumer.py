@@ -13,10 +13,10 @@ class KanbanConsumer(BaseJsonConsumer):
         super().__init__(*args, **kwargs)
         self.board_id = None
         self.action_map = {
+            'add_card': self.add_card,
             'update_card_order': self.update_card_order,
             'update_pipe_line_order': self.update_pipe_line_order,
             'add_pipe_line': self.add_pipe_line,
-            'add_card': self.add_card,
             'rename_pipe_line': self.rename_pipe_line,
             'delete_pipe_line': self.delete_pipe_line,
             'delete_board': self.delete_board,
@@ -31,6 +31,8 @@ class KanbanConsumer(BaseJsonConsumer):
         :return:
         """
         # 验证检查
+        print('------------- websocket connect, scope contains: ', self.scope)
+        print('-------------')
         if not self.scope['user'].is_authenticated:
             await self.close()
             return
