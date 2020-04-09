@@ -13,4 +13,4 @@ class PipeLineSerializer(ModelSerializer):
 
     class Meta:
         model = PipeLine
-        fields = ('name', 'updated_at', 'card_set')
+        fields = ('board', 'name', 'updated_at', 'card_set')

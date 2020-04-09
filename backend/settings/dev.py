@@ -14,3 +14,19 @@ ALLOWED_HOSTS = ['*']
 #     ),
 # }
 
+INSTALLED_APPS += [
+    'debug_toolbar',
+]
+
+MIDDLEWARE += [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+APPEND_SLASH = False
+
+# debug toolbar
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]

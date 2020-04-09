@@ -10,10 +10,17 @@ from .cards import CardAPIView
 from .pipelines import PipeLineAPIView
 
 
-router = DefaultRouter()
+class OptionalSlashRouter(DefaultRouter):
+
+    def __init__(self):
+        super().__init__()
+        self.trailing_slash = '/?'
+
+
+router = OptionalSlashRouter()
 router.register(r'boards', BoardAPIVIew)
-router.register(r'cards', CardAPIView)
 router.register(r'pipelines', PipeLineAPIView)
+router.register(r'cards', CardAPIView)
 
 urlpatterns = [
     path('account/', login_required(AccountAPIView.as_view())),

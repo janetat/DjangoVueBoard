@@ -5,14 +5,16 @@ verify_ssl = true
 
 [dev-packages]
 bpython = "*"
+django-debug-toolbar = "*"
+django-extensions = "*"
 
 [packages]
-django = ">=2.1"
-channels = ">=2.1"
+django = "*"
+channels = "*"
 django-extensions = "*"
-channels-redis = ">=2.2"
+channels-redis = "*"
 djangorestframework = "*"
 django-rest-swagger = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8.1"

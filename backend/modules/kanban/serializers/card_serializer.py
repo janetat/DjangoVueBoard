@@ -5,4 +5,4 @@ from modules.kanban.models.card import Card
 class CardSerializer(ModelSerializer):
     class Meta:
         model = Card
-        fields = ('title', 'content', 'updated_at')
+        fields = ('pipe_line', 'title', 'content', 'updated_at')

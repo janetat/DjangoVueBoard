@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'modules.kanban',
     'django_extensions',
     'rest_framework',
-    'rest_framework_swagger'
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -137,7 +137,8 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('172.17.0.2', 6379)],
         },
     },
 }
+
