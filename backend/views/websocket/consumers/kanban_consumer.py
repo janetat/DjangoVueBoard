@@ -52,19 +52,19 @@ class KanbanConsumer(BaseJsonConsumer):
             # 如果Board不存在，则指示客户端重定向
             await self.send_back_to_home()
 
-    async def send_board_data(self, event=None):
+    async def send_board_data(self, message=None):
         """
         发送Board数据
         :return:
         """
-        if event.get('requester_id') == self.consumer_id:
+        if message.get('requester_id') == self.consumer_id:
             return
         board_data = await database_sync_to_async(kanban_sv.get_board_data_by_board_id)(self.board_id)
         await self.send_data({
             'boardData': board_data,
         }, mutation='setBoardData')
 
-    async def update_card_order(self, content):
+    async def update_card_order(self, message):
         """
         更新PipeLine里面的Card顺序
         {
@@ -74,12 +74,12 @@ class KanbanConsumer(BaseJsonConsumer):
         }
         :return:
         """
-        pipe_line_id = content['pipeLineId']
-        card_id_list = content['cardIdList']
+        pipe_line_id = message['pipeLineId']
+        card_id_list = message['cardIdList']
         await database_sync_to_async(kanban_sv.update_card_order)(pipe_line_id, card_id_list)
         await self.broadcast_board_data_without_requester()
 
-    async def update_pipe_line_order(self, content):
+    async def update_pipe_line_order(self, message):
         """
          更新PipeLine的顺序
         {
@@ -88,66 +88,66 @@ class KanbanConsumer(BaseJsonConsumer):
             'pipeLineIdList': [2, 1]
         }
         """
-        board_id = content['boardId']
-        pipe_line_id_list = content['pipeLineIdList']
+        board_id = message['boardId']
+        pipe_line_id_list = message['pipeLineIdList']
         await database_sync_to_async(kanban_sv.update_pipe_line_order)(board_id, pipe_line_id_list)
         await self.broadcast_board_data_without_requester()
 
-    async def add_pipe_line(self, content):
+    async def add_pipe_line(self, message):
         """
         添加PipeLine
         """
-        board_id = content['boardId']
-        pipe_line_name = content['pipeLineName']
+        board_id = message['boardId']
+        pipe_line_name = message['pipeLineName']
         await database_sync_to_async(kanban_sv.add_pipe_line)(board_id, pipe_line_name)
         await self.broadcast_board_data()
 
-    async def add_card(self, content):
+    async def add_card(self, message):
         """
         添加Card
         """
-        pipe_line_id = content['pipeLineId']
-        card_title = content['cardTitle']
+        pipe_line_id = message['pipeLineId']
+        card_title = message['cardTitle']
         await database_sync_to_async(kanban_sv.add_card)(pipe_line_id, card_title)
         await self.broadcast_board_data()
 
-    async def rename_board(self, content):
+    async def rename_board(self, message):
         """
         重命名Board
-        :param content:
+        :param message:
         :return:
         """
-        board_id = content['boardId']
-        board_name = content['boardName']
+        board_id = message['boardId']
+        board_name = message['boardName']
         await database_sync_to_async(kanban_sv.update_board)(board_id, board_name)
         await self.broadcast_board_data()
 
-    async def rename_pipe_line(self, content):
+    async def rename_pipe_line(self, message):
         """
         重命名PipeLine
         """
-        pipe_line_id = content['pipeLineId']
-        pipe_line_name = content['pipeLineName']
+        pipe_line_id = message['pipeLineId']
+        pipe_line_name = message['pipeLineName']
         await database_sync_to_async(kanban_sv.update_pipe_line)(pipe_line_id, pipe_line_name)
         await self.broadcast_board_data()
 
-    async def delete_pipe_line(self, content):
+    async def delete_pipe_line(self, message):
         """
         删除PipeLine
-        :param content:
+        :param message:
         :return:
         """
-        pipe_line_id = content['pipeLineId']
+        pipe_line_id = message['pipeLineId']
         await database_sync_to_async(kanban_sv.delete_pipe_line)(pipe_line_id)
         await self.broadcast_board_data()
 
-    async def delete_board(self, content):
+    async def delete_board(self, message):
         """
         删除Board
-        :param content:
+        :param message:
         :return:
         """
-        board_id = content['boardId']
+        board_id = message['boardId']
         await database_sync_to_async(kanban_sv.delete_board)(board_id)
         await self.broadcast_delete_board()
 

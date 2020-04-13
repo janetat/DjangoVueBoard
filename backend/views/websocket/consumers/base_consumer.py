@@ -71,11 +71,11 @@ class BaseJsonConsumer(AsyncJsonWebsocketConsumer):
             channel_name
         )
 
-    async def group_send(self, group_name, body):
+    async def group_send(self, group_name, message):
         """
         在组里发信息
         """
         await self.channel_layer.group_send(
             group_name,
-            body
+            message
         )
