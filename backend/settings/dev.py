@@ -34,3 +34,8 @@ INTERNAL_IPS = [
 REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
 
 TIME_ZONE = 'Asia/Shanghai'
+
+STATICFILES_DIRS = [
+    os.path.join(FRONT_END_DIR, 'static'),
+    os.path.join(FRONT_END_DIR, 'vue', 'dist', 'static'),
+]
