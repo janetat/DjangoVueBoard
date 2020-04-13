@@ -45,6 +45,3 @@ class CardAPIView(ModelViewSet):
         return Response({
             'success': True
         }, status=status.HTTP_204_NO_CONTENT)
-
-    def perform_destroy(self, instance):
-        instance.delete()

@@ -46,11 +46,6 @@ class BaseJsonConsumer(AsyncJsonWebsocketConsumer):
                 'data': content,
             }
         content.update(send_data)
-        print('*' * 30)
-        print('websocket base_consumer.send_data: ')
-        import json
-        print(json.dumps(content))
-        print('*' * 30)
         await self.send_json(content)
 
     async def receive_json(self, content, **kwargs):
