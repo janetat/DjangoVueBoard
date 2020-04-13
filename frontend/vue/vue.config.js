@@ -1,7 +1,9 @@
 module.exports = {
-    outputDir: '../static/assets',
-    filenameHashing: false,
-    runtimeCompiler: true,
+    // outputDir: '',
+    assetsDir: 'static',
+    indexPath: '../../templates/index.html',
+    // filenameHashing: false,
+    // runtimeCompiler: true,
     // chainWebpack: config => {
     //   config.plugins.delete('hmr');
     //   config.plugins.delete('html');

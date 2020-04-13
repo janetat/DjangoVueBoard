@@ -1,8 +1,18 @@
 <template>
-    Not using this file
-    查看router, DefaultLayout.vue才是路由开始的endpoint
-    templates/index.html 是#app所在
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
 
-<style lang="scss" scoped>
+<style>
+    @import 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.6.1/theme-chalk/index.css';
+    @import 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/simplex/bootstrap.min.css';
 </style>
+
+{#阻止某些浏览器在卡片drop的时候， 打开新的标签页#}
+<script>
+    document.body.ondrop = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+</script>
