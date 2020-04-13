@@ -50,12 +50,11 @@ sqlite
 
 # How to start
 ```
-light up redis(the simplest way: in terminal, type 'redis-server')
+light up redis(the simplest way: in terminal, type 'redis-server'. )
 
 frontend:
 cd frontend/vue/ npm install
-npm run build-watch(dev)
-npm run build(prod, but need to modify index.html a little bit<script src="...">)
+npm run build-watch
 
 backend:
 pipenv install
