@@ -137,7 +137,6 @@ class KanbanConsumer(BaseJsonConsumer):
         :param content:
         :return:
         """
-        board_id = content['boardId']
         pipe_line_id = content['pipeLineId']
         await database_sync_to_async(kanban_sv.delete_pipe_line)(pipe_line_id)
         await self.broadcast_board_data()
@@ -152,10 +151,10 @@ class KanbanConsumer(BaseJsonConsumer):
         await database_sync_to_async(kanban_sv.delete_board)(board_id)
         await self.broadcast_delete_board()
 
-    async def send_back_to_home(self, *args, **kwargs):
+    async def send_back_to_home(self):
         await self.send_data({}, action='backToHome')
 
-    async def broadcast_delete_board(self, *args, **kwargs):
+    async def broadcast_delete_board(self):
         """
         让组里每个Consumer将客户端重定向到Home
         :param args:
@@ -168,7 +167,7 @@ class KanbanConsumer(BaseJsonConsumer):
             }
         )
 
-    async def broadcast_board_data(self, *args, **kwargs):
+    async def broadcast_board_data(self):
         """
         让每个组里每个Consumer发回最新的Board数据
         """
@@ -179,7 +178,7 @@ class KanbanConsumer(BaseJsonConsumer):
             }
         )
 
-    async def broadcast_board_data_without_requester(self, *args, **kwargs):
+    async def broadcast_board_data_without_requester(self):
         """
         让将Board数据返回给调用此方法的Consumer以外的组里任何人
         """

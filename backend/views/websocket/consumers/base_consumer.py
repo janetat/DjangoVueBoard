@@ -1,3 +1,4 @@
+import pysnooper
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
 
@@ -27,26 +28,27 @@ class BaseJsonConsumer(AsyncJsonWebsocketConsumer):
         :param str namespace:
         :return:
         """
-        namespace = self.namespace if namespace is None else namespace
-        send_data = {
-            'namespace': namespace
-        }
-        if mutation and action:
-            raise ConsumerException('mutation and action is only one.')
-
-        if (not mutation) and (not action):
-            raise ConsumerException('mutation or action must be set.')
-
-        if mutation:
-            send_data['mutation'] = mutation
-        if action:
-            send_data['action'] = action
-        if not isinstance(content, dict):
-            content = {
-                'data': content,
+        with pysnooper.snoop():
+            namespace = self.namespace if namespace is None else namespace
+            send_data = {
+                'namespace': namespace
             }
-        content.update(send_data)
-        await self.send_json(content)
+            if mutation and action:
+                raise ConsumerException('mutation and action is only one.')
+
+            if (not mutation) and (not action):
+                raise ConsumerException('mutation or action must be set.')
+
+            if mutation:
+                send_data['mutation'] = mutation
+            if action:
+                send_data['action'] = action
+            if not isinstance(content, dict):
+                content = {
+                    'data': content,
+                }
+            content.update(send_data)
+            await self.send_json(content)
 
     async def receive_json(self, content, **kwargs):
         """
