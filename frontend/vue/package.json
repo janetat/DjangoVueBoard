@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "axios-progress-bar": "^1.2.0",
     "camelcase-keys": "^4.2.0",
     "element-ui": "^2.13.1",
